@@ -18,7 +18,7 @@ void Field::DrawSeenField( const VectorI& player_pos )
 			}
 		}
 	}
-	gfx.DrawRectDim( ScreenMid,BlockDimansion,BlockDimansion,{ 0,0,255 } );
+	//gfx.DrawRectDim( ScreenMid,BlockDimansion,BlockDimansion,{ 0,0,255 } );
 }
 
 void Field::PlaceBlock( const VectorI& mouse_pos,const VectorI& player_pos )

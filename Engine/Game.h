@@ -39,5 +39,5 @@ private:
 	MainWindow& wnd;
 	Graphics gfx;
     Field fel;
-    VectorI player_pos = { 60,60 };
+    VectorI player_pos;
 };

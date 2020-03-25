@@ -25,7 +25,8 @@ Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
 	gfx( wnd ),
-    fel( gfx )
+    fel( gfx ),
+    player_pos( { 255,255 } )
 {
 }
 

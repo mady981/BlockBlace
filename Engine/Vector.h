@@ -36,8 +36,8 @@ public:
 	VectorI operator/( int rhs ) const;
 	VectorI& operator/=( int rhs );
 	bool operator==( const VectorI & rhs ) const;
-	int getLength() const;
-	int getLengthSq() const;
+	float getLength() const;
+	float getLengthSq() const;
 	VectorI& Nomalize();
 	VectorI getNomalize() const;
 public:

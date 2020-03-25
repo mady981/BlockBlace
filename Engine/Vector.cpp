@@ -130,14 +130,14 @@ bool VectorI::operator==( const VectorI& rhs ) const
 	return x == rhs.x && y == rhs.y;
 }
 
-int VectorI::getLength() const
+float VectorI::getLength() const
 {
 	return std::sqrt( getLengthSq() );
 }
 
-int VectorI::getLengthSq() const
+float VectorI::getLengthSq() const
 {
-	return x * x + y * y;
+	return float( x * x + y * y );
 }
 
 VectorI& VectorI::Nomalize()
@@ -147,7 +147,7 @@ VectorI& VectorI::Nomalize()
 
 VectorI VectorI::getNomalize() const
 {
-	const int len = getLengthSq();
+	const int len = int( getLengthSq() );
 	if ( len != 0 )
 	{
 		return *this * ( 1 / len );
