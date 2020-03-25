@@ -11,7 +11,7 @@ Field::Field( Graphics& gfx )
 	}
 }
 
-void Field::DrawSeenField( const Vector& player_pos )
+void Field::DrawSeenField( const VectorF& player_pos )
 {
 	for ( int y = int( player_pos.y ) - RenderDistens; y <= int( player_pos.y ) + RenderDistens; ++y )
 	{
@@ -19,19 +19,19 @@ void Field::DrawSeenField( const Vector& player_pos )
 		{
 			if ( HasBlock[y * FieldWidth + x] )
 			{
-				gfx.DrawRectDim( ScreenMid + ( ( Vector( float( x ),float( y ) ) - player_pos ) * BlockDimansion ) + Vector( 1,1 ),BlockDimansion - 2,BlockDimansion - 2,{ 0,255,0 } );
+				gfx.DrawRectDim( ScreenMid + ( ( VectorF( float( x ),float( y ) ) - player_pos ) * BlockDimansion ) + VectorF( 1,1 ),BlockDimansion - 2,BlockDimansion - 2,{ 0,255,0 } );
 			}
 		}
 	}
 }
 
-void Field::PlaceBlock( const Vector& mouse_pos,const Vector& player_pos )
+void Field::PlaceBlock( const VectorF& mouse_pos,const VectorF& player_pos )
 {
 	assert( mouse_pos.x < ScreenMid.x + RenderDistens * BlockDimansion );
 	assert( mouse_pos.x > ScreenMid.x - RenderDistens * BlockDimansion );
 	assert( mouse_pos.y < ScreenMid.y + RenderDistens * BlockDimansion );
 	assert( mouse_pos.y > ScreenMid.y - RenderDistens * BlockDimansion );
-	Vector block = { player_pos + ( ( mouse_pos - ScreenMid ) / BlockDimansion ) };
+	VectorF block = { player_pos + ( ( mouse_pos - ScreenMid ) / BlockDimansion ) };
 	HasBlock[int( block.y * FieldWidth + block.x )] = true;
 }
 

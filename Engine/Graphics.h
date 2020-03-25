@@ -63,7 +63,7 @@ public:
 	{
 		DrawRect( x0,y0,x0 + width,y0 + height, c );
 	}
-	void DrawRectDim( const Vector& topleft,int width,int height,Color c )
+	void DrawRectDim( const VectorF& topleft,int width,int height,Color c )
 	{
 		DrawRectDim( int( topleft.x ),int( topleft.y ),width,height,c );
 	}
