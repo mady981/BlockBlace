@@ -4,13 +4,6 @@ Field::Field( Graphics& gfx )
 	:
 	gfx( gfx )
 {
-	for ( int i = 0; i < FieldWidth; ++i )
-	{
-		//HasBlock[60 * FieldWidth + i] = true;
-		//HasBlock[i * FieldWidth + 60] = true;
-	}
-	HasBlock[60 * FieldWidth + 60] = true;
-	HasBlock[55 * FieldWidth + 60] = true;
 }
 
 void Field::DrawSeenField( const VectorI& player_pos )
