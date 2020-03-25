@@ -4,6 +4,11 @@ Field::Field( Graphics& gfx )
 	:
 	gfx( gfx )
 {
+	for ( int i = 0; i < FieldWidth; ++i )
+	{
+		HasBlock[60 * FieldWidth + i] = true;
+		HasBlock[i * FieldWidth + 60] = true;
+	}
 }
 
 void Field::DrawSeenField( const Vector& player_pos )
@@ -32,12 +37,14 @@ void Field::PlaceBlock( const Vector& mouse_pos )
 
 void Field::Border() const
 {
-	for ( int y = 36; y < gfx.ScreenHeight - 35; ++y )
+	for ( int y = int( ScreenMid.y ) -  RenderDistens * BlockDimansion - 5; y <= ScreenMid.y + ( RenderDistens + 1 ) * BlockDimansion + 5; ++y )
 	{
-		for ( int x = 36; x < gfx.ScreenWidth - 35; ++x )
+		for ( int x = int( ScreenMid.x ) - RenderDistens * BlockDimansion - 5; x <= ScreenMid.x + ( RenderDistens + 1 ) * BlockDimansion + 5; ++x )
 		{
-			if ( !( y >= 40 && y < gfx.ScreenHeight - 40
-				&& x >= 40 && x < gfx.ScreenWidth - 40 ) )
+			if (!( y >= ScreenMid.y - RenderDistens * BlockDimansion
+				&& y < ScreenMid.y + ( RenderDistens + 1 ) * BlockDimansion
+				&& x >= ScreenMid.x - RenderDistens * BlockDimansion
+				&& x < ScreenMid.x + ( RenderDistens + 1 ) * BlockDimansion ) )
 			{
 				gfx.PutPixel( x,y,{ 128,128,128 } );
 			}

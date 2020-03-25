@@ -14,8 +14,8 @@ private:
 	static constexpr int BlockDimansion = 20; //pixel , one block
 	static constexpr unsigned char FieldWidth = 255; //blocks
 	static constexpr unsigned char FieldHeight = 255; //blocks
-	static constexpr int RenderDistens = 10; //blocks
+	static constexpr int RenderDistens = 14; //blocks
 	bool HasBlock[FieldWidth * FieldHeight] = { false };
-	const Vector ScreenMid = { Graphics::ScreenWidth / 2,Graphics::ScreenHeight / 2 }; //Pixel
+	const Vector ScreenMid = { ( Graphics::ScreenWidth / 2 ) - ( BlockDimansion / 2 ),( Graphics::ScreenHeight / 2 ) - ( BlockDimansion / 2 ) }; //Pixel
 	Graphics& gfx;
 };
