@@ -39,4 +39,5 @@ private:
 	MainWindow& wnd;
 	Graphics gfx;
     Field fel;
+    bool isClicked = false;
 };

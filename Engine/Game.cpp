@@ -39,6 +39,17 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+    if ( wnd.mouse.LeftIsPressed() && !isClicked )
+    {
+        isClicked = true;
+        Vector mouse_pos;
+        mouse_pos = { float( wnd.mouse.GetPosX() ),float( wnd.mouse.GetPosY() ) };
+        fel.PlaceBlock( mouse_pos,Vector( 60,60 ) );
+    }
+    else
+    {
+        isClicked = false;
+    }
 }
 
 void Game::ComposeFrame()

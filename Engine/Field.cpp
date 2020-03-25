@@ -25,14 +25,14 @@ void Field::DrawSeenField( const Vector& player_pos )
 	}
 }
 
-void Field::PlaceBlock( const Vector& mouse_pos )
+void Field::PlaceBlock( const Vector& mouse_pos,const Vector& player_pos )
 {
-	assert( mouse_pos.x < ScreenMid.x + RenderDistens );
-	assert( mouse_pos.x > ScreenMid.x - RenderDistens );
-	assert( mouse_pos.y < ScreenMid.y + RenderDistens );
-	assert( mouse_pos.y > ScreenMid.y - RenderDistens );
-	Vector Bock = { mouse_pos / BlockDimansion };
-	HasBlock[int( mouse_pos.y ) * FieldWidth + int( mouse_pos.x )] = true;
+	assert( mouse_pos.x < ScreenMid.x + RenderDistens * BlockDimansion );
+	assert( mouse_pos.x > ScreenMid.x - RenderDistens * BlockDimansion );
+	assert( mouse_pos.y < ScreenMid.y + RenderDistens * BlockDimansion );
+	assert( mouse_pos.y > ScreenMid.y - RenderDistens * BlockDimansion );
+	Vector block = { player_pos + ( ( mouse_pos - ScreenMid ) / BlockDimansion ) };
+	HasBlock[int( block.y * FieldWidth + block.x )] = true;
 }
 
 void Field::Border() const
