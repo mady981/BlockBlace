@@ -42,9 +42,9 @@ void Game::UpdateModel()
     if ( wnd.mouse.LeftIsPressed() && !isClicked )
     {
         isClicked = true;
-        VectorF mouse_pos;
-        mouse_pos = { float( wnd.mouse.GetPosX() ),float( wnd.mouse.GetPosY() ) };
-        fel.PlaceBlock( mouse_pos,VectorF( 60,60 ) );
+        VectorI mouse_pos;
+        mouse_pos = { wnd.mouse.GetPosX() ,wnd.mouse.GetPosY() };
+        fel.PlaceBlock( mouse_pos,VectorI( 60,60 ) );
     }
     else
     {
@@ -55,5 +55,5 @@ void Game::UpdateModel()
 void Game::ComposeFrame()
 {
     fel.Border();
-    fel.DrawSeenField( VectorF( 60,60 ) );
+    fel.DrawSeenField( VectorI( 60,60 ) );
 }
