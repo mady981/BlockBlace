@@ -20,6 +20,16 @@ void Field::DrawSeenField( const Vector& player_pos )
 	}
 }
 
+void Field::PlaceBlock( const Vector& mouse_pos )
+{
+	assert( mouse_pos.x < ScreenMid.x + RenderDistens );
+	assert( mouse_pos.x > ScreenMid.x - RenderDistens );
+	assert( mouse_pos.y < ScreenMid.y + RenderDistens );
+	assert( mouse_pos.y > ScreenMid.y - RenderDistens );
+	Vector Bock = { mouse_pos / BlockDimansion };
+	HasBlock[int( mouse_pos.y ) * FieldWidth + int( mouse_pos.x )] = true;
+}
+
 void Field::Border() const
 {
 	for ( int y = 36; y < gfx.ScreenHeight - 35; ++y )

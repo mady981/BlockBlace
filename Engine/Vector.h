@@ -10,6 +10,8 @@ public:
 	Vector& operator-=( const Vector& rhs );
 	Vector operator*( float rhs ) const;
 	Vector& operator*=( float rhs );
+	Vector operator/( float rhs ) const;
+	Vector& operator/=( float rhs );
 	bool operator==( const Vector& rhs ) const;
 	float getLength() const;
 	float getLengthSq() const;
