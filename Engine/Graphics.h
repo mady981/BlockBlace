@@ -65,7 +65,7 @@ public:
 	}
 	void DrawRectDim( const Vector& topleft,int width,int height,Color c )
 	{
-		DrawRectDim( topleft.x,topleft.y,width,height,c );
+		DrawRectDim( int( topleft.x ),int( topleft.y ),width,height,c );
 	}
 	~Graphics();
 private:

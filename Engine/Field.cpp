@@ -8,13 +8,13 @@ Field::Field( Graphics& gfx )
 
 void Field::DrawSeenField( const Vector& player_pos )
 {
-	for ( int y = int( player_pos.y ) - 10; y <= int( player_pos.y ) + 10; ++y )
+	for ( int y = int( player_pos.y ) - RenderDistens; y <= int( player_pos.y ) + RenderDistens; ++y )
 	{
-		for ( int x = int( player_pos.x ) - 10; x <= int( player_pos.x ) + 10; ++x )
+		for ( int x = int( player_pos.x ) - RenderDistens; x <= int( player_pos.x ) + RenderDistens; ++x )
 		{
 			if ( HasBlock[y * FieldWidth + x] )
 			{
-				//block relativ zum player???
+				gfx.DrawRectDim( ScreenMid + ( ( Vector( float( x ),float( y ) ) - player_pos ) * BlockDimansion ) + Vector( 1,1 ),BlockDimansion - 2,BlockDimansion - 2,{ 0,255,0 } );
 			}
 		}
 	}

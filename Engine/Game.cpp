@@ -24,7 +24,8 @@
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
-	gfx( wnd )
+	gfx( wnd ),
+    fel( gfx )
 {
 }
 
@@ -42,4 +43,6 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
+    fel.Border();
+    fel.DrawSeenField( Vector( 60,60 ) );
 }
