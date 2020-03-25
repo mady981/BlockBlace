@@ -18,13 +18,14 @@ void Field::DrawSeenField( const VectorI& player_pos )
 			}
 		}
 	}
+	gfx.DrawRectDim( ScreenMid,BlockDimansion,BlockDimansion,{ 0,0,255 } );
 }
 
 void Field::PlaceBlock( const VectorI& mouse_pos,const VectorI& player_pos )
 {
-	assert( mouse_pos.x < ScreenMid.x + RenderDistens * BlockDimansion );
+	assert( mouse_pos.x <= ScreenMid.x + ( RenderDistens + 1 ) * BlockDimansion );
 	assert( mouse_pos.x > ScreenMid.x - RenderDistens * BlockDimansion );
-	assert( mouse_pos.y < ScreenMid.y + RenderDistens * BlockDimansion );
+	assert( mouse_pos.y <= ScreenMid.y + ( RenderDistens + 1 ) * BlockDimansion );
 	assert( mouse_pos.y > ScreenMid.y - RenderDistens * BlockDimansion );
 	VectorI topleft = { ScreenMid - VectorI( RenderDistens * BlockDimansion,RenderDistens * BlockDimansion ) };
 	VectorI block = { player_pos + ( ( mouse_pos - topleft ) / BlockDimansion ) - VectorI( RenderDistens,RenderDistens ) };
@@ -46,4 +47,9 @@ void Field::Border() const
 			}
 		}
 	}
+}
+
+const HitBoxI Field::getFieldHB() const
+{
+	return HitBoxI::fromCenter( VectorI( gfx.ScreenWidth / 2,gfx.ScreenHeight / 2 ),RenderDistens * BlockDimansion,RenderDistens * BlockDimansion );
 }

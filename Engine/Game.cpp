@@ -39,16 +39,34 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-    if ( wnd.mouse.LeftIsPressed())
+    if ( wnd.kbd.KeyIsPressed( VK_UP ) )
     {
-        VectorI mouse_pos;
-        mouse_pos = { wnd.mouse.GetPosX() ,wnd.mouse.GetPosY() };
-        fel.PlaceBlock( mouse_pos,VectorI( 60,60 ) );
+        --player_pos.y;
+    }
+    else if ( wnd.kbd.KeyIsPressed( VK_DOWN ) )
+    {
+        ++player_pos.y;
+    }
+    else if ( wnd.kbd.KeyIsPressed( VK_LEFT ) )
+    {
+        --player_pos.x;
+    }
+    else if ( wnd.kbd.KeyIsPressed( VK_RIGHT ) )
+    {
+        ++player_pos.x;
+    }
+    if ( wnd.mouse.LeftIsPressed() )
+    {
+        VectorI mouse_pos = { wnd.mouse.GetPosX(),wnd.mouse.GetPosY() };
+        if ( fel.getFieldHB().isOverlappingWith( mouse_pos ) )
+        {
+            fel.PlaceBlock( mouse_pos,player_pos );
+        }
     }
 }
 
 void Game::ComposeFrame()
 {
     fel.Border();
-    fel.DrawSeenField( VectorI( 60,60 ) );
+    fel.DrawSeenField( player_pos );
 }

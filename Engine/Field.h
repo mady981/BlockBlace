@@ -1,6 +1,7 @@
 #pragma once
 #include "Graphics.h"
 #include "Vector.h"
+#include "HitBox.h"
 #include <assert.h>
 
 class Field
@@ -10,6 +11,7 @@ public:
 	void DrawSeenField( const VectorI& player_pos );
 	void PlaceBlock( const VectorI& mouse_pos,const VectorI& player_pos );
 	void Border() const;
+	const HitBoxI getFieldHB() const;
 private:
 	static constexpr int BlockDimansion = 20; //pixel , one block
 	static constexpr unsigned char FieldWidth = 255; //blocks
