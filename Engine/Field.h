@@ -10,10 +10,16 @@ public:
 	enum class Block
 	{
 		Empty,
+		Black,
+		Blue,
+		Cyan,
+		Gray,
 		Green,
+		LightGray,
+		Magenta,
 		Red,
-		Yellow,
-		GreenBlue
+		White,
+		Yellow
 	};
 public:
 	Field( Graphics& gfx );
@@ -25,10 +31,10 @@ public:
 	const HitBoxI getFieldHB() const;
 	HitBoxI getColorHitBox( int nhb );
 private:
-	static constexpr int BlockDimansion = 10; //pixel , one block
+	static constexpr int BlockDimansion = 16; //pixel , one block
 	static constexpr unsigned char FieldWidth = 255; //blocks
 	static constexpr unsigned char FieldHeight = 255; //blocks
-	static constexpr int RenderDistens = 28; //blocks
+	static constexpr int RenderDistens = 16; //blocks
 	static constexpr int nColors = 5;
 private:
 	const VectorI ScreenMid = { ( Graphics::ScreenWidth / 2 ) - ( BlockDimansion / 2 ),( Graphics::ScreenHeight / 2 ) - ( BlockDimansion / 2 ) }; //Pixel
@@ -36,5 +42,5 @@ private:
 	Block chosen_block = { Block::Empty };
 	Block placed_block[FieldWidth * FieldHeight] = { Block::Empty };
 	Graphics& gfx;
-	HitBoxI chb[nColors];
+	HitBoxI chb[11];
 };
