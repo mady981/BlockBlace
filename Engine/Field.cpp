@@ -86,11 +86,11 @@ void Field::Border() const
 
 void Field::DrawBlockBar()
 {
-	gfx.DrawRectHB( getBlockHitBox( 0 ),Colors::White );
-	gfx.DrawRectHB( getBlockHitBox( 1 ),Colors::Green );
-	gfx.DrawRectHB( getBlockHitBox( 2 ),Colors::Red );
-	gfx.DrawRectHB( getBlockHitBox( 3 ),Colors::Yellow );
-	gfx.DrawRectHB( getBlockHitBox( 4 ),{ 0,255,255 } );
+	gfx.DrawRectHB( getColorHitBox( 0 ),Colors::White );
+	gfx.DrawRectHB( getColorHitBox( 1 ),Colors::Green );
+	gfx.DrawRectHB( getColorHitBox( 2 ),Colors::Red );
+	gfx.DrawRectHB( getColorHitBox( 3 ),Colors::Yellow );
+	gfx.DrawRectHB( getColorHitBox( 4 ),{ 0,255,255 } );
 }
 
 const HitBoxI Field::getFieldHB() const
@@ -100,45 +100,45 @@ const HitBoxI Field::getFieldHB() const
 
 void Field::getBlock( const VectorI& mouse_pos )
 {
-	if ( getBlockHitBox( 0 ).isOverlappingWith( mouse_pos ) )
+	if ( getColorHitBox( 0 ).isOverlappingWith( mouse_pos ) )
 	{
 		chosen_block = Block::Empty;
 	}
-	else if ( getBlockHitBox( 1 ).isOverlappingWith( mouse_pos ) )
+	else if ( getColorHitBox( 1 ).isOverlappingWith( mouse_pos ) )
 	{
 		chosen_block = Block::Green;
 	}
-	else if ( getBlockHitBox( 2 ).isOverlappingWith( mouse_pos ) )
+	else if ( getColorHitBox( 2 ).isOverlappingWith( mouse_pos ) )
 	{
 		chosen_block = Block::Red;
 	}
-	else if ( getBlockHitBox( 3 ).isOverlappingWith( mouse_pos ) )
+	else if ( getColorHitBox( 3 ).isOverlappingWith( mouse_pos ) )
 	{
 		chosen_block = Block::Yellow;
 	}
-	else if ( getBlockHitBox( 4 ).isOverlappingWith( mouse_pos ) )
+	else if ( getColorHitBox( 4 ).isOverlappingWith( mouse_pos ) )
 	{
 		chosen_block = Block::GreenBlue;
 	}
 }
 
-HitBoxI Field::getBlockHitBox( int nhb )
+HitBoxI Field::getColorHitBox( int nhb )
 {
 	if ( nhb == 1 )
 	{
-		return bhb[1] = { topleft - VectorI( 20 + 2 * BlockDimansion,-( 20 + 2 * BlockDimansion ) ),2 * BlockDimansion,2 * BlockDimansion };
+		return chb[1] = { topleft - VectorI( 20 + 2 * BlockDimansion,-( 20 + 2 * BlockDimansion ) ),2 * BlockDimansion,2 * BlockDimansion };
 	}
 	else if ( nhb == 2 )
 	{
-		return bhb[2] = { topleft - VectorI( 20 + 2 * BlockDimansion,-( 40 + 2 * BlockDimansion ) ),2 * BlockDimansion,2 * BlockDimansion };
+		return chb[2] = { topleft - VectorI( 20 + 2 * BlockDimansion,-( 40 + 2 * BlockDimansion ) ),2 * BlockDimansion,2 * BlockDimansion };
 	}
 	else if ( nhb == 3 )
 	{
-		return bhb[3] = { topleft - VectorI( 20 + 2 * BlockDimansion,-( 60 + 2 * BlockDimansion ) ),2 * BlockDimansion,2 * BlockDimansion };
+		return chb[3] = { topleft - VectorI( 20 + 2 * BlockDimansion,-( 60 + 2 * BlockDimansion ) ),2 * BlockDimansion,2 * BlockDimansion };
 	}
 	else if ( nhb == 4 )
 	{
-		return bhb[4] = { topleft - VectorI( 20 + 2 * BlockDimansion,-( 80 + 2 * BlockDimansion ) ),2 * BlockDimansion,2 * BlockDimansion };
+		return chb[4] = { topleft - VectorI( 20 + 2 * BlockDimansion,-( 80 + 2 * BlockDimansion ) ),2 * BlockDimansion,2 * BlockDimansion };
 	}
-	return bhb[0] = { topleft - VectorI( 20 + 2 * BlockDimansion,0 ),2 * BlockDimansion,2 * BlockDimansion };
+	return chb[0] = { topleft - VectorI( 20 + 2 * BlockDimansion,0 ),2 * BlockDimansion,2 * BlockDimansion };
 }
