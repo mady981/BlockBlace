@@ -19,7 +19,7 @@ void Field::DrawSeenField( const VectorI& player_pos )
 				case Field::Block::Empty:
 					break;
 				case Field::Block::Black:
-					gfx.DrawRectDim( ScreenMid + ( ( VectorI( x,y ) - player_pos ) * BlockDimansion ) + VectorI( 1,1 ),BlockDimansion - 2,BlockDimansion - 2,Colors::Black );
+					gfx.DrawRectDim( ScreenMid + ( ( VectorI( x,y ) - player_pos ) * BlockDimansion ) + VectorI( 1,1 ),BlockDimansion - 2,BlockDimansion - 2,{ 16,16,16 } );
 					break;
 				case Field::Block::Blue:
 					gfx.DrawRectDim( ScreenMid + ( ( VectorI( x,y ) - player_pos ) * BlockDimansion ) + VectorI( 1,1 ),BlockDimansion - 2,BlockDimansion - 2,Colors::Blue );
@@ -122,7 +122,7 @@ void Field::Border() const
 void Field::DrawBlockBar()
 {
 	gfx.DrawRectHB( getColorHitBox( 0 ),{ 64,64,64 } );
-	gfx.DrawRectHB( getColorHitBox( 1 ),Colors::Black );
+	gfx.DrawRectHB( getColorHitBox( 1 ),{ 16,16,16 } );
 	gfx.DrawRectHB( getColorHitBox( 2 ),Colors::Blue );
 	gfx.DrawRectHB( getColorHitBox( 3 ),Colors::Cyan );
 	gfx.DrawRectHB( getColorHitBox( 4 ),Colors::Gray );
