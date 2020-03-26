@@ -25,6 +25,7 @@
 #include "ChiliException.h"
 #include "Colors.h"
 #include "Vector.h"
+#include "HitBox.h"
 
 class Graphics
 {
@@ -66,6 +67,10 @@ public:
 	void DrawRectDim( const VectorI& topleft,int width,int height,Color c )
 	{
 		DrawRectDim( int( topleft.x ),int( topleft.y ),width,height,c );
+	}
+	void DrawRectHB( const HitBoxI& hb,Color c )
+	{
+		DrawRect( hb.left,hb.top,hb.right,hb.bottem,c );
 	}
 	~Graphics();
 private:

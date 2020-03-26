@@ -26,7 +26,7 @@ Game::Game( MainWindow& wnd )
 	wnd( wnd ),
 	gfx( wnd ),
     fel( gfx ),
-    player_pos( { 255,255 } )
+    player_pos( { 100,100 } )
 {
 }
 
@@ -63,11 +63,13 @@ void Game::UpdateModel()
         {
             fel.PlaceBlock( mouse_pos,player_pos );
         }
+        fel.getBlock( mouse_pos );
     }
 }
 
 void Game::ComposeFrame()
 {
     fel.Border();
+    fel.DrawBlockBar();
     fel.DrawSeenField( player_pos );
 }
